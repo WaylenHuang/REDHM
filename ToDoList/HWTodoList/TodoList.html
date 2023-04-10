@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        padding :0 px;
+        margin : 0 px;
+    }
+
+    body{
+        width :500px;
+        height: 600px;
+        font-family: '微軟正黑體';
+    }
+
+    #ALLBorder{
+        border: 1px solid;
+        border-radius: 20px;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);       
+        width: 100%;
+        height :100%;
+        overflow:auto ;
+        background-color: rgb(235, 228, 217);
+    }
+
+    .center{
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+</style>
+<body>
+<div id="ALLBorder">
+    <h1 class="center">TODOLIST</h1>
+    <div class="center">
+        <label for="hi">請輸入備存文字:</label>
+        <form action="#" id="Create" name="hi">
+        <input type="text" id="IPTtext" required>
+        <input type="submit" id="submit" value="送出">
+        <button type="reset" value="submit">清空</button>
+        </form>
+    </div>
+    <div class="center">
+        <div id ="ListBorder">
+        <ol id ="addlist">
+    
+        </ol>
+    </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    var BtnSubmit = document.getElementById('submit');
+    BtnSubmit.addEventListener("click",subfn);  //新增DOM元素 放入li
+
+    function subfn(){
+        if(IPTtext.value==""){
+            alert("空空如也!")
+        }else{
+        var addBox =document.getElementById('addlist'); //新增li
+        var createli=document.createElement('li');
+        var BtnDelete= document.createElement('button');
+        var ADDlabel = document.createElement('label');
+
+        BtnDelete.innerText="刪除";  //在button新增值 方能顯示
+        BtnDelete.addEventListener('click',function (){
+            addBox.removeChild(createli);    //DOM元素 父刪指定的子 元素
+        });
+
+        ADDlabel.innerText=IPTtext.value;
+
+        addBox.append(createli);
+        ADDlabel.append(BtnDelete);
+        createli.prepend(ADDlabel);
+            };
+
+    };
+</script>
+</html>
